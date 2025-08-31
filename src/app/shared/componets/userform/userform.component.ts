@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-userform',
   templateUrl: './userform.component.html',
   styleUrls: ['./userform.component.scss'],
+    standalone: false
+
 })
 export class UserformComponent  implements OnInit {
 

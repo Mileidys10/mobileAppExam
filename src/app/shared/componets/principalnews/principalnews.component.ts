@@ -4,6 +4,8 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-principalnews',
   templateUrl: './principalnews.component.html',
   styleUrls: ['./principalnews.component.scss'],
+    standalone: false
+
 })
 export class PrincipalnewsComponent  implements OnInit {
 

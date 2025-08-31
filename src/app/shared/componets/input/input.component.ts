@@ -1,13 +1,27 @@
-import { Component, OnInit } from '@angular/core';
+import { Component,   Input, OnInit } from '@angular/core';
+import { FormControl, } from '@angular/forms';
 
 @Component({
   selector: 'app-input',
   templateUrl: './input.component.html',
   styleUrls: ['./input.component.scss'],
+    standalone: false
+
 })
 export class InputComponent  implements OnInit {
+@Input() label: string ='';
+@Input() type: 'text'|'email' | 'password' ='text';
+@Input()clear: boolean = false;
+@Input() controller: FormControl = new FormControl();
+@Input() placeholder: string = '';
 
-  constructor() { }
+
+
+
+
+
+constructor() { }
+
 
   ngOnInit() {}
 

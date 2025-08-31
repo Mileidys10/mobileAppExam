@@ -13,6 +13,7 @@ import { SidebarComponent } from './componets/sidebar/sidebar.component';
 import { UserformComponent } from './componets/userform/userform.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { StorageProvider } from './provide/storage-provider';
 
 
 
@@ -30,6 +31,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     SidebarComponent,
     UserformComponent
   ],
+providers:[StorageProvider],
+
   imports: [
     CommonModule,
     IonicModule,

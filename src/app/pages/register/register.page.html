@@ -1,0 +1,26 @@
+<ion-content [fullscreen]="true">
+
+  <form (submit)="onSubmit()">
+
+
+
+
+
+<app-header title="Register"></app-header>
+
+    <h1>Register</h1>
+
+
+
+
+    <app-input label="Name" type="text" [clear]="true" [controller]=nameController></app-input>
+    <app-input label="Last Name" type="text" [clear]="true" [controller]=lastNameController></app-input>
+    <app-input label="Email" type="email" [clear]="true" [controller]=emailController></app-input>
+    <app-input label="Password:" type="password" [clear]="true" [controller]=passwordController></app-input>
+    <app-input label="country" type="text" [clear]="true" [controller]=countryController></app-input>
+    <app-button textButton="Submit" shape="round" type="submit"> </app-button>
+
+    <app-button textButton="Back" shape="round" (click)="goToLogin()"> </app-button>
+    <!-- debo agregar el icono <-- usando la doc de ionic-->
+  </form>
+</ion-content>

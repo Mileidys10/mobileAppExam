@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>login</ion-title>
-  </ion-toolbar>
-</ion-header>
+<ion-content [fullscreen] = "true">
+  
+  <form (submit)="onSubmit()" >
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">login</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<app-header></app-header>
+    <app-input label = "Email" type="email" [clear]="true" [controller] = emailController  ></app-input>
+    <app-input label = "Password:" type = "password" [clear]="true" [controller] = passwordController></app-input>
+    
+    <app-button textButton = "Sign In" shape="round" type = "submit"> </app-button>
+    <app-button textButton = "Sign Up" shape="round" (click)="goToRegister()" > </app-button>
+
+  </form>
 </ion-content>

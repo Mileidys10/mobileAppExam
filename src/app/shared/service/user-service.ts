@@ -9,21 +9,31 @@ export class UserService {
   constructor(private storageProvider: StorageProvider, private Encriptar:Encriptador) { }
 
   createUser(user: Iuser) {
-    this.storageProvider.set('user', JSON.stringify(user));
+    const users:Iuser[] = this.storageProvider.get<Iuser[]>('users') || [];
+    user.password = this.Encriptar.encriptar(user.password);
+    users.push(user);
+    this.storageProvider.set('users', JSON.stringify(users));
    
   }
 
 
 verifyUser(email: string, password: string): boolean {
-  password = this.Encriptar.encriptar(password);
-   const user: Iuser | null = this.storageProvider.get<Iuser>('user');
+   const users: Iuser[] = this.storageProvider.get<Iuser[]>('users') || [];
+    const user = users.find(u => u.email === email);
   if (!user) {
     return false;
   }
-  return user.email === email && user.password === password;
+  console.log(this.Encriptar.desencriptar(user.password));
+  if (user.email === email && this.Encriptar.desencriptar(user.password) === password) {
+    this.storageProvider.set('user', JSON.stringify(user));
+    return true;
+  } 
+  return false;
 }
 
-
+getUser(){
+  return this.storageProvider.get<Iuser>('user');
+}
 
 
 }    

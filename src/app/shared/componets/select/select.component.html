@@ -1,3 +1,9 @@
-<p>
-  select works!
-</p>
+
+
+<ion-select [label]="label" [placeholder]="placeholder">
+  
+  @for (item of list?.data; track $index) {
+    <ion-select-option value="{{ item.name }}">{{ item.name }}</ion-select-option>
+
+  }
+</ion-select>

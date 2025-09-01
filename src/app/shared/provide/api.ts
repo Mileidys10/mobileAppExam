@@ -11,8 +11,12 @@ export class Api {
 
   
   
-  async get<T>(url:string):Promise<Observable<T>>{
-    
-    return this.httpClient.get<T>(url);
+  async get<T>(url:string):Promise<T>{
+    return new Promise((resolve, reject)=>{
+      this.httpClient.get<T>(url).subscribe({
+        next: (value) => resolve(value),
+        error: (err) => reject(err)
+      })
+    });
   }
 }

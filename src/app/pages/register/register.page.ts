@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { Country } from 'src/app/interfaces/country';
 import { Api } from 'src/app/shared/provide/api';
 import { StorageProvider } from 'src/app/shared/provide/storage-provider';
 import { Iuser, UserService } from 'src/app/shared/service/user-service';
@@ -31,20 +32,21 @@ export class RegisterPage implements OnInit {
   emailController: FormControl = new FormControl('', [Validators.required, Validators.email])
   passwordController: FormControl = new FormControl('', [Validators.required])
   countryController: FormControl = new FormControl('', [Validators.required])
-  data:Idata |null =null;
+  data:Country |null =null;
 
   constructor(private userService: UserService, private router: Router, private http:Api) { }
 
   ngOnInit() {
+    this.paises();
   }
 
   onSubmit() {
     
 // Verifica si los campos están vacíos
-  if (!this.passwordController.valid || !this.emailController.valid || !this.nameController.valid || !this.lastNameController.valid || !this.countryController.valid) {
+  /*if (!this.passwordController.valid || !this.emailController.valid || !this.nameController.valid || !this.lastNameController.valid || !this.countryController.valid) {
     console.log('fill all the fields');
     return;
-  }
+  }*/
 
   // Verifica el formato del email
   if (!this.emailController.valid) {
@@ -68,20 +70,16 @@ const user:Iuser = {
 
 
   async paises(){
-  (await this.http.get<Idata>('https://countriesnow.space/api/v0.1/countries/flag/unicode')).subscribe({
-    next:(value)=> {
-     console.log(value); 
-      this.data =value;
-    },
-    error:(err)=>console.log(err),
-    
-
-  })
-  console.log(this.data);
-}
+    this.data = await this.http.get<Country>('https://countriesnow.space/api/v0.1/countries/flag/unicode');
+    //console.log(this.data);
+  }
 
 
   goToLogin() {
     this.router.navigate(['/login']);
   }
+
+
+
+
 }

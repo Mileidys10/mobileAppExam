@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { Country } from 'src/app/interfaces/country';
 
 @Component({
   selector: 'app-select',
@@ -9,6 +10,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectComponent  implements OnInit {
 
+  @Input() label: string ='';
+  @Input() placeholder: string ='';
+  @Input() list:Country | null = null;
   constructor() { }
 
   ngOnInit() {}

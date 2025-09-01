@@ -66,6 +66,7 @@ const user:Iuser = {
 
 
     this.userService.createUser(user);
+       this.router.navigate(['/login']);
 
   }
 

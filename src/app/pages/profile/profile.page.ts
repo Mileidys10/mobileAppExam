@@ -82,7 +82,7 @@ const user:Iuser = {
     }
 
 
-    this.userService.createUser(user);
+    this.userService.updateUser(user);
   console.log('Password updated successfully');
 
   }

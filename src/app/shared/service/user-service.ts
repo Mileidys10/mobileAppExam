@@ -43,9 +43,26 @@ updateUser(updatedUser: Iuser) {
 }
 
 
-getUser(){
-  return this.storageProvider.get<Iuser>('user');
+getUser(): Iuser | null {
+  const userStr = this.storageProvider.get<string>('user');
+
+  // por si esta vacio o mal guardado
+  if (!userStr) return null;
+
+  try {
+    // por si viene serializado
+    if (typeof userStr === 'string') {
+      return JSON.parse(userStr);
+    }
+
+    //  por si vino como objeto 
+    return userStr as Iuser;
+  } catch (error) {
+    console.error('Error parsing user from storage:', error);
+    return null;
+  }
 }
+
 
 getDecryptedPassword(user: Iuser): string {
   return this.Encriptar.desencriptar(user.password);

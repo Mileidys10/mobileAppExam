@@ -16,8 +16,9 @@
     <app-input label="Name" type="text" [clear]="true" [controller]=nameController></app-input>
     <app-input label="Last Name" type="text" [clear]="true" [controller]=lastNameController></app-input>
     <app-input label="Email" type="email" [clear]="true" [controller]=emailController></app-input>
-    <app-input label="Password:" type="password" [clear]="true" [controller]=passwordController></app-input>
-    <app-select label = "Country" [list]="data">  </app-select>
+    <app-input label="Old Password:" type="password" [clear]="true" [controller]=passwordController></app-input>
+    
+    <app-select label="Country" [list]="data" [controller]="countryController"></app-select>  
     <app-button textButton="Submit" shape="round" type="submit"> </app-button>
 
     <app-button textButton="Back" shape="round" (click)="goToLogin()"> </app-button>

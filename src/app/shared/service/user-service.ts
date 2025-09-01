@@ -31,10 +31,25 @@ verifyUser(email: string, password: string): boolean {
   return false;
 }
 
+updateUser(updatedUser: Iuser) {
+  const users: Iuser[] = this.storageProvider.get<Iuser[]>('users') || [];
+  const index = users.findIndex(u => u.id === updatedUser.id);
+  if (index !== -1) {
+    updatedUser.password = this.Encriptar.encriptar(updatedUser.password);
+    users[index] = updatedUser;
+    this.storageProvider.set('users', JSON.stringify(users));
+ this.storageProvider.set('user', JSON.stringify(updatedUser));
+  }
+}
+
+
 getUser(){
   return this.storageProvider.get<Iuser>('user');
 }
 
+getDecryptedPassword(user: Iuser): string {
+  return this.Encriptar.desencriptar(user.password);
+}
 
 }    
 

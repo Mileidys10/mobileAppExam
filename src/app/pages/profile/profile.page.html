@@ -1,8 +1,19 @@
 <ion-content [fullscreen]="true">
-  <app-input
-    label="Name"
-    type="text"
-    placeholder="Enter your name"
-    [controller]="nameController"
-    ></app-input>
+
+  <form (submit)="onSubmit()">
+
+    <app-input label="Name" type="text" placeholder="Enter your name" [controller]="nameController"></app-input>
+    <app-input label="Last Name" type="text" placeholder="Enter your last name"
+      [controller]="lastNameController"></app-input>
+    <app-input label="Email" type="email" placeholder="Enter your email" [controller]="emailController"></app-input>
+    <app-input label="Password" type="password" placeholder="Enter your old password"
+      [controller]="passwordController"></app-input>
+    <app-input label="New Password" type="password" placeholder="Enter your new password"
+      [controller]="newPasswordController"></app-input>
+    <app-select label="Country" [list]="data" [controller]="countryController"></app-select>
+
+    <app-button textButton="Update" shape="round" type="submit"> </app-button>
+    <app-button textButton="Back" shape="round" (click)="goToHome()"> </app-button>
+  </form>
+
 </ion-content>

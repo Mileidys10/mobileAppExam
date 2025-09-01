@@ -32,13 +32,14 @@ export class RegisterPage implements OnInit {
   emailController: FormControl = new FormControl('', [Validators.required, Validators.email])
   passwordController: FormControl = new FormControl('', [Validators.required])
   countryController: FormControl = new FormControl('', [Validators.required])
-  data:Country |null =null;
-
+data: Country[] = [];
   constructor(private userService: UserService, private router: Router, private http:Api) { }
 
+
+
+
   ngOnInit() {
-    this.paises();
-  }
+  this.loadCountries();  }
 
   onSubmit() {
     
@@ -69,11 +70,13 @@ const user:Iuser = {
   }
 
 
-  async paises(){
-    this.data = await this.http.get<Country>('https://countriesnow.space/api/v0.1/countries/flag/unicode');
-    //console.log(this.data);
-  }
-
+ async loadCountries() {
+  const response = await this.http.get<any>('https://countriesnow.space/api/v0.1/countries/flag/unicode');
+  this.data = response.data?.map((c: any) => ({
+    name: c.name,
+    unicodeFlag: c.unicodeFlag
+  })) || [];
+}
 
   goToLogin() {
     this.router.navigate(['/login']);

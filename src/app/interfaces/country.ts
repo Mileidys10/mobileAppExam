@@ -1,4 +1,6 @@
 export interface Country {
+    name: string;
+  unicodeFlag: string;
   error: boolean
   msg: string
   data: Daum[]

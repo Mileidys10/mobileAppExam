@@ -1,9 +1,16 @@
 
 
-<ion-select [label]="label" [placeholder]="placeholder">
+<!--<ion-select [label]="label" [placeholder]="placeholder" [formControl]="controller">
   
   @for (item of list?.data; track $index) {
     <ion-select-option value="{{ item.name }}">{{ item.name }}</ion-select-option>
 
   }
+</ion-select> -->  
+
+
+<ion-select [formControl]="controller" [placeholder]="placeholder" [label]="label">
+  <ion-select-option *ngFor="let item of list" [value]="item.name">
+    <span *ngIf="item.unicodeFlag">{{ item.unicodeFlag }} </span>{{ item.name }}
+  </ion-select-option>
 </ion-select>

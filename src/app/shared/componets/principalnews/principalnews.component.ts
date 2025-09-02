@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Component, Input, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { NewsInterface } from 'src/app/interfaces/news-interface';
+import { News } from 'src/app/service/news';
 
 @Component({
   selector: 'app-principalnews',
@@ -8,9 +12,9 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class PrincipalnewsComponent  implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {}
+@Input() news: NewsInterface | null = null;
+ ngOnInit() {
+    
+  }
 
 }

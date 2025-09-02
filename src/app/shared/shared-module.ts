@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { InputComponent } from './componets/input/input.component';
 import { ButtonComponent } from './componets/button/button.component';
-import { CardComponent } from './componets/card/card.component';
 import { HeaderComponent } from './componets/header/header.component';
 import { LinkComponent } from './componets/link/link.component';
 import { ListComponent } from './componets/list/list.component';
@@ -14,6 +13,8 @@ import { UserformComponent } from './componets/userform/userform.component';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StorageProvider } from './provide/storage-provider';
+import { NewsListComponentComponent } from './componets/news-list-component/news-list-component.component';
+import { NewsCardComponent } from './componets/news-card-component/news-card-component.component';
 
 
 
@@ -21,7 +22,8 @@ import { StorageProvider } from './provide/storage-provider';
   declarations: [
     InputComponent,
     ButtonComponent,
-    CardComponent,
+    NewsListComponentComponent,
+    NewsCardComponent,
     HeaderComponent,
     LinkComponent,
     ListComponent,
@@ -29,7 +31,9 @@ import { StorageProvider } from './provide/storage-provider';
     PrincipalnewsComponent,
     SelectComponent,
     SidebarComponent,
-    UserformComponent
+    UserformComponent,
+    NewsCardComponent
+
   ],
 providers:[StorageProvider],
 
@@ -41,7 +45,7 @@ providers:[StorageProvider],
 
   ],
 
-  exports:[InputComponent,ButtonComponent,CardComponent,HeaderComponent,LinkComponent,ListComponent,ModalComponent,PrincipalnewsComponent,SelectComponent,SidebarComponent,UserformComponent]
+  exports:[NewsCardComponent,NewsListComponentComponent,  InputComponent,ButtonComponent,HeaderComponent,LinkComponent,ListComponent,ModalComponent,PrincipalnewsComponent,SelectComponent,SidebarComponent,UserformComponent]
 
 })
 export class SharedModule { }

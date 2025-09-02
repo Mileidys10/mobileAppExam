@@ -1,2 +1,19 @@
+<ion-menu side="end" contentId="main-content" menuId="main-menu">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>{{ userName }}</ion-title>
+    </ion-toolbar>
+    <ion-toolbar>
+      <p style="margin-left: 16px; font-size: 12px;">{{ userStatus }}</p>
+    </ion-toolbar>
+  </ion-header>
 
-<app-list>      </app-list>
+  <ion-content>
+    <app-list [items]="items"></app-list>
+
+   <ion-item button (click)="onLogout()">
+  <ion-icon name="log-out-outline" slot="start"></ion-icon>
+  Logout
+</ion-item>                        
+  </ion-content>
+</ion-menu>

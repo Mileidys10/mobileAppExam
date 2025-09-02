@@ -1,1 +1,7 @@
-<app-link></app-link>
+<ion-list>
+  <app-link
+    *ngFor="let item of items"
+    [item]="item"
+    (linkClicked)="itemSelected.emit($event)">
+  </app-link>
+</ion-list>

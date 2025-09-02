@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AlertController } from '@ionic/angular';
 import { Country } from 'src/app/interfaces/country';
 import { Api } from 'src/app/shared/provide/api';
 import { StorageProvider } from 'src/app/shared/provide/storage-provider';
@@ -31,9 +32,10 @@ export class RegisterPage implements OnInit {
   lastNameController: FormControl = new FormControl('', [Validators.required])
   emailController: FormControl = new FormControl('', [Validators.required, Validators.email])
   passwordController: FormControl = new FormControl('', [Validators.required])
+  confirmPasswordController: FormControl = new FormControl('', [Validators.required])
   countryController: FormControl = new FormControl('', [Validators.required])
 data: Country[] = [];
-  constructor(private userService: UserService, private router: Router, private http:Api) { }
+  constructor(private userService: UserService, private router: Router, private http:Api, private alertCtrl:AlertController) { }
 
 
 
@@ -41,19 +43,23 @@ data: Country[] = [];
   ngOnInit() {
   this.loadCountries();  }
 
-  onSubmit() {
+  async onSubmit() {
     
-// Verifica si los campos están vacíos
-  /*if (!this.passwordController.valid || !this.emailController.valid || !this.nameController.valid || !this.lastNameController.valid || !this.countryController.valid) {
-    console.log('fill all the fields');
-    return;
-  }*/
 
-  // Verifica el formato del email
   if (!this.emailController.valid) {
     console.log('Invalid email format');
     return;
   }
+
+  if (this.passwordController.value.trim() !== this.confirmPasswordController.value.trim()) {
+  const alert = await this.alertCtrl.create({
+    header: 'Error',
+    message: 'Passwords do not match',
+    buttons: ['OK']
+  });
+  await alert.present();
+  return;
+}
 
 const user:Iuser = {
      id: uuidv4(),

@@ -1,4 +1,15 @@
-<app-header></app-header>
+
+
+<ion-header>
+  <app-header></app-header>
+</ion-header>
+
 <ion-content>
-  <app-principalnews></app-principalnews>
+  <app-principalnews [news]="principalNews"></app-principalnews>
+
+  <ng-container *ngFor="let news of newsList">
+    <app-news-card [news]="news" (click)="openModal(news)"></app-news-card>
+  </ng-container>
 </ion-content>
+
+<app-sidebar></app-sidebar>

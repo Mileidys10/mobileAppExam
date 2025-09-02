@@ -1,3 +1,4 @@
-<p>
-  link works!
-</p>
+<ion-item button (click)="onClick()">
+  <ion-icon *ngIf="item.icon" [name]="item.icon" slot="start"></ion-icon>
+  <ion-label>{{ item.label }}</ion-label>
+</ion-item>

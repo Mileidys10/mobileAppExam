@@ -1,3 +1,5 @@
-<p>
-  principalnews works!
-</p>
+<div *ngIf="news">
+  <h2>{{ news.title }}</h2>
+  <img [src]="news.urlToImage" *ngIf="news.urlToImage">
+  <p>{{ news.description }}</p>
+</div>

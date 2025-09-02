@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { SideItem } from '../sidebar/sidebar.component';
 
 @Component({
   selector: 'app-list',
@@ -8,7 +9,13 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class ListComponent  implements OnInit {
+ @Input() items: SideItem[] = [];
+  @Output() itemSelected = new EventEmitter<SideItem>();
 
+  selectItem(item: SideItem) {
+    this.itemSelected.emit(item);
+
+  }
   constructor() { }
 
   ngOnInit() {}

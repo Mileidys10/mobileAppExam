@@ -105,7 +105,7 @@ async initProfile() {
   }
 async loadCountries() {
   const response = await this.http.get<any>('https://countriesnow.space/api/v0.1/countries/flag/unicode');
-  // Mapea solo los países con nombre y bandera
+  // Mapeo solo los paises con nombre y bandera
   this.data = response.data?.map((c: any) => ({
     name: c.name,
     unicodeFlag: c.unicodeFlag

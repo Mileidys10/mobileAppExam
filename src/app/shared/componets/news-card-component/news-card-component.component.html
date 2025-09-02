@@ -1,0 +1,12 @@
+<ion-card>
+  <img *ngIf="article.urlToImage" [src]="article.urlToImage" />
+  <ion-card-header>
+    <ion-card-title>{{ article.title }}</ion-card-title>
+  </ion-card-header>
+  <ion-card-content>
+    <p>{{ article.description }}</p>
+  </ion-card-content>
+  <ion-item lines="none">
+    <ion-button expand="block" (click)="openArticle(article.url)">Leer más</ion-button>
+  </ion-item>
+</ion-card>

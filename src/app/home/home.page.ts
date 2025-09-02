@@ -21,15 +21,31 @@ principalNews: NewsInterface | null = null;
     this.loadNews();
   }
 
-  loadNews() {
+
+  //old version
+  /*loadNews() {
      this.news.getNews().subscribe((response: { articles: any; }) => {
       const allNews = response.articles;
       this.principalNews = allNews[0];
+      
       this.newsList = allNews.slice(1);
+      
     });
-  }
+  }*/
+
+    loadNews() {
+  this.news.getNews().subscribe((response: { articles: any[]; }) => {
+    // Filtra solo noticias válidas
+    const allNews = (response.articles ?? []).filter(
+      a => !!a && !!a.title && !!a.url && !!a.description
+    );
+    this.principalNews = allNews[0] ?? null;
+    this.newsList = allNews.slice(1);
+  });
+}
 
   async openModal(news: NewsInterface) {
+      console.log('Noticia enviada al modal:', news);
     const modal = await this.modalCtrl.create({
       component: ModalComponent,
       componentProps: { news }

@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { NewsInterface } from 'src/app/interfaces/news-interface';
 
 @Component({
   selector: 'app-modal',
@@ -8,9 +10,22 @@ import { Component, OnInit } from '@angular/core';
 
 })
 export class ModalComponent  implements OnInit {
+  @Input() news!: NewsInterface;
 
-  constructor() { }
+  constructor(private modalCtrl: ModalController) { }
+
+
 
   ngOnInit() {}
 
+close() {
+    this.modalCtrl.dismiss();
+  }
+
+  openExternal() {
+    window.open(this.news.url, '_blank');
+  }
 }
+
+
+

@@ -11,9 +11,8 @@
   </ion-item>
 </ion-card> -->
 
-<div *ngIf="news">
-  <img *ngIf="news.urlToImage" [src]="news.urlToImage" alt="Imagen noticia" />
+<div class="news-card" (click)="onCardClick()">
+  <img *ngIf="news?.urlToImage" [src]="news.urlToImage" alt="Imagen noticia" />
   <h2>{{ news.title }}</h2>
   <p>{{ news.description }}</p>
 </div>
-

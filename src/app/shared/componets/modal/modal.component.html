@@ -1,3 +1,13 @@
-<p>
-  modal works!
-</p>
+<ion-header>
+  <ion-toolbar>
+    <ion-title>{{ news.title }}</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="close()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <img *ngIf="news?.urlToImage" [src]="news.urlToImage" alt="Imagen noticia" />
+  <p>{{ news.description }}</p>
+  <ion-button expand="block" (click)="openExternal()">Ver noticia completa</ion-button>
+</ion-content>

@@ -10,11 +10,12 @@ import {  NewsInterface } from 'src/app/interfaces/news-interface';
 })
 export class NewsCardComponent {
   @Input() article: any;
-@Input() news: NewsInterface = {} as NewsInterface;
+//@Input() news: NewsInterface = {} as NewsInterface;
+@Input() news!: NewsInterface;
 
   openArticle(url?: string) {
     if (!url) return;
-    /
+    
     window.open(url, '_blank');
   }
 }

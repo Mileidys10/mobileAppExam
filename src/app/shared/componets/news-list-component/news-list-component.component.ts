@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { SharedModule } from '../../shared-module';
 
 import { IonCol, IonGrid, IonRow } from "@ionic/angular/standalone";
+import { NewsInterface } from 'src/app/interfaces/news-interface';
 
 @Component({
   selector: 'app-news-list-component',
@@ -11,6 +12,7 @@ import { IonCol, IonGrid, IonRow } from "@ionic/angular/standalone";
 })
 export class NewsListComponentComponent  implements OnInit {
 @Input() news: any[] = [];
+@Input() newsList: NewsInterface[] = [];
   constructor() { }
 
   ngOnInit() {}

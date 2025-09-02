@@ -8,7 +8,7 @@
   <app-principalnews [news]="principalNews"></app-principalnews>
 
   <ng-container *ngFor="let news of newsList">
-    <app-news-card [news]="news" (click)="openModal(news)"></app-news-card>
+    <app-news-card *ngFor="let article of newsList" [news]="article" (click)="openModal(news)"></app-news-card>
   </ng-container>
 </ion-content>
 
